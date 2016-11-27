@@ -1,6 +1,15 @@
-/*jshint node:true*/
-/* global require, module */
+/* eslint-disable */
+
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
+//The current emver environment
+const env = process.env.EMBER_ENV;
+
+// Config and initilize dotenv
+// https://www.npmjs.com/package/dotenv
+require("dotenv").config({
+    path: `.env.${env}`
+});
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {

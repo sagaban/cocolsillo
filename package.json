@@ -10,7 +10,10 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "clean": "rm -rf node_modules bower_components dist tmp",
+    "resolveDeps": "yarn install && bower install",
+    "redo": "npm run-script clean && npm run-script resolveDeps"
   },
   "repository": "",
   "engines": {
@@ -20,6 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
+    "dotenv": "^2.0.0",
     "ember-ajax": "^2.4.1",
     "ember-cli": "2.9.1",
     "ember-cli-app-version": "^2.0.0",
@@ -39,6 +43,7 @@
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-welcome-page": "^1.0.3",
+    "emberfire": "2.0.4",
     "eslint-plugin-ember-suave": "^1.0.0",
     "loader.js": "^4.0.10"
   }

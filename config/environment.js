@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-disable */
 
 module.exports = function(environment) {
   var ENV = {
@@ -6,6 +6,15 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
+
+    firebase: {
+      apiKey: process.env.FIREBASE_API_KEY,
+      databaseURL: `https://${process.env.FIREBASE_APP_NAME}.firebaseio.com`,
+      authDomain: `${process.env.FIREBASE_APP_NAME}.firebaseapp.com`,
+      storageBucket: `${process.env.FIREBASE_APP_NAME}.appspot.com`,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
+    },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

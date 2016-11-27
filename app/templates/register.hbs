@@ -1,0 +1,21 @@
+<div class="register-page">
+  <h1>Register</h1>
+  <div class='page-header'>
+    <h2>Complete the following fields</h2>
+  </div>
+  {{input
+    type='text'
+    class='form-control'
+    value=email
+    placeholder='email'
+  }}
+  {{input
+    type='password'
+    class='form-control'
+    value=password
+    placeholder='password'
+  }}
+  <button {{action 'register'}}>
+    Register
+  </button>
+</div>

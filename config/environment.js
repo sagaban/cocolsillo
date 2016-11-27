@@ -24,8 +24,9 @@ module.exports = function(environment) {
     },
 
     'ember-simple-auth': {
-      authenticationRoute: '',
-      routeAfterAuthentication: 'main'
+      authenticationRoute: 'index',
+      routeAfterAuthentication: 'main',
+      routeIfAlreadyAuthenticated: 'main'
     },
 
     EmberENV: {

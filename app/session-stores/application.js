@@ -2,7 +2,18 @@ import AdaptiveStore from 'ember-simple-auth/session-stores/adaptive';
 import Ember from 'ember';
 
 const FIREBASE_PROVIDER = 'firebase-simple-auth';
-const FIREBASE_ATTRIBUTES = ['authenticator', 'displayName', 'email', 'emailVerified', 'isAnonymous', 'refreshToken', 'uid', 'provider', 'photoURL'];
+
+/**
+ * These are the firebase's user's attributes and plus 'authenticator' and
+ * 'provider' required by ember-simple-auth.
+ * See https://firebase.google.com/docs/reference/js/firebase.auth.Auth#signInWithEmailAndPassword
+ * See https://firebase.google.com/docs/reference/js/firebase.User
+ * If anyone know a better way to do this, please, please email me.
+ *
+ * @type {Array<String>}
+ * @private
+ */
+const ATTRIBUTES_TO_PERSIST = ['displayName', 'email', 'emailVerified', 'isAnonymous', 'refreshToken', 'uid', 'providerData', 'photoURL', 'refreshToken', 'authenticator', 'provider'];
 
 const { get } = Ember;
 
@@ -16,26 +27,28 @@ export default AdaptiveStore.extend({
   @return {Ember.RSVP.Promise} A promise that resolves when the data has successfully been persisted and rejects otherwise.
   @public
   */
-  persist(...args) {
-    const filteredArgs = args.map((data) => {
-      if (get(data, 'authenticated.provider') === FIREBASE_PROVIDER) {
-        return this._serializeFirebaseRespose(data);
-      }
-      return data;
-    });
-    return this.get('_store').persist(filteredArgs);
+  persist(sessionData) {
+    let userData;
+    if (get(sessionData, 'authenticated.provider') === FIREBASE_PROVIDER) {
+      userData = this._serializeFirebaseResponse(sessionData);
+    } else {
+      userData = sessionData;
+    }
+    return this.get('_store').persist(userData);
   },
 
   /**
    * I have to filter firebase response due to its circular reference
+   * This is an very ugly way to do this.
    *
-   * @method _serializeFirebaseRespose
-   * @param {Object}  Firebase authentication response to persist
-   * @return {Object} Firebase data
+   * @method _serializeFirebaseResponse
+   * @param {Object}  Firebase authentication response wrapped in
+   *                  'authenticated' object
+   * @return {Object} Firebase user data
    * @private
    */
-  _serializeFirebaseRespose(data) {
-    return FIREBASE_ATTRIBUTES.reduce((ac, value) => {
+  _serializeFirebaseResponse(data) {
+    return ATTRIBUTES_TO_PERSIST.reduce((ac, value) => {
       ac.authenticated[value] = data.authenticated[value];
       return ac;
     }, { authenticated: {} });

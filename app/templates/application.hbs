@@ -1,0 +1,5 @@
+{{ember-notify messageStyle='semantic-ui'}}
+{{#if session.isAuthenticated}}
+  <a {{action 'invalidateSession'}}>Logout</a>
+{{/if}}
+{{outlet}}

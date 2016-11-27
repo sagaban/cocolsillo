@@ -15,6 +15,19 @@ module.exports = function(environment) {
       messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
     },
 
+    torii: {
+      sessionServiceName: 'session',
+      providers: {
+        'firebase-simple-auth': {
+        }
+      }
+    },
+
+    'ember-simple-auth': {
+      authenticationRoute: 'sessions',
+      routeAfterAuthentication: 'posts'
+    },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

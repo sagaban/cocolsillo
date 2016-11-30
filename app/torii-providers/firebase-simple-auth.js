@@ -1,7 +1,4 @@
 import FirebaseSimpleAuth from 'ember-simple-auth-firebase/torii-providers/firebase-simple-auth';
-import Ember from 'ember';
-
-const { RSVP } = Ember;
 
 /**
  * These are the firebase's user's attributes
@@ -15,23 +12,22 @@ const ATTRIBUTES_TO_PERSIST = ['displayName', 'email', 'emailVerified', 'isAnony
 
 export default FirebaseSimpleAuth.extend({
 
-  firebaseApp: Ember.inject.service(),
-
   open() {
     return this._super(...arguments)
     .then((authResponse) => {
-      // const firebase = this.get('firebaseApp');
-      // firebase.auth().onAuthStateChanged(function(user) {
-      //   if (user) {
-      //     RSVP.resolve(user);
-      //   } else {
-      //     RSVP.reject({ message: 'There is no logged user' });
-      //   }
-      // });
       return authResponse ? this._serializeFirebaseResponse(authResponse) : null;
     });
   },
 
+  /**
+   * I have to filter firebase response due to its circular reference
+   * This is an very ugly way to do this.
+   *
+   * @method _serializeFirebaseResponse
+   * @param   {Object}  data Firebase signInWithEmailAndPassword response
+   * @return  {Object}  Firebase user data
+   * @private
+   */
   _serializeFirebaseResponse(data) {
     return ATTRIBUTES_TO_PERSIST.reduce((ac, value) => {
       ac[value] = data[value];

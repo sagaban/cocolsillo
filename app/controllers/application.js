@@ -11,10 +11,7 @@ export default Ember.Controller.extend({
 
   actions: {
     invalidateSession: function invalidateSession() {
-      this.get('session').invalidate()
-      .then(() => {
-        this.get('notify').info('You logged out');
-      });
+      this.get('session').invalidate();
     }
   }
 });

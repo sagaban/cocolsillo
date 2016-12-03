@@ -2,13 +2,16 @@ import FirebaseSimpleAuth from 'ember-simple-auth-firebase/torii-providers/fireb
 
 /**
  * These are the firebase's user's attributes
+ * ['displayName', 'email', 'emailVerified', 'isAnonymous', 'refreshToken',
+ * 'uid', 'providerData', 'photoURL', 'refreshToken']
  * See https://firebase.google.com/docs/reference/js/firebase.auth.Auth#signInWithEmailAndPassword
  * See https://firebase.google.com/docs/reference/js/firebase.User
+ * See https://firebase.google.com/docs/auth/web/manage-users
  *
  * @type {Array<String>}
  * @private
  */
-const ATTRIBUTES_TO_PERSIST = ['displayName', 'email', 'emailVerified', 'isAnonymous', 'refreshToken', 'uid', 'providerData', 'photoURL', 'refreshToken'];
+const ATTRIBUTES_TO_PERSIST = ['displayName', 'email', 'uid', 'photoURL'];
 
 export default FirebaseSimpleAuth.extend({
 

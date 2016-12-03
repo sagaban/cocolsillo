@@ -10,7 +10,6 @@ export default Ember.Route.extend(
   UnauthenticatedRouteMixin,
   {
 
-    notify: service(),
     session: service(),
 
     actions: {
@@ -24,9 +23,6 @@ export default Ember.Route.extend(
             password
           }
         )
-        .then(() => {
-          this.get('notify').success('You are logged in');
-        })
         .catch((e) => {
           this.get('notify').error(e.message || 'There was an error in the authentication');
           Logger.error(`There was an error in the authentication: ${e}`);

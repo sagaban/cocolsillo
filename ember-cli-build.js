@@ -1,8 +1,11 @@
 /* eslint-disable */
 
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const cssnano = require('cssnano');
+const precss = require('precss');
+const cssnext = require('postcss-cssnext');
 
-//The current emver environment
+// The current emver environment
 const env = process.env.EMBER_ENV;
 
 // Config and initilize dotenv
@@ -12,8 +15,35 @@ require("dotenv").config({
 });
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
+  const app = new EmberApp(defaults, {
     // Add options here
+
+    // POSTCSS
+    postcssOptions: {
+      compile: {
+        enabled: true,
+        plugins: [
+          { module: cssnext },
+          { module: precss },
+          {
+            module: cssnano,
+            options: {
+              safe: true,
+              sourcemap: true
+            }
+          }
+        ]
+      }
+    },
+
+    SemanticUI: {
+      import: {
+        fonts: true,
+        images: false,
+        css: true,
+        javascript: false
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

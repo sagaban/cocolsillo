@@ -15,6 +15,17 @@
             {{input
               type='text'
               class='form-control'
+              value=name
+              placeholder='Nombre'
+            }}
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            {{input
+              type='text'
+              class='form-control'
               value=email
               placeholder='E-mail address'
             }}
@@ -32,7 +43,7 @@
           </div>
         </div>
         <button class="ui fluid large teal submit button"
-          {{action (route-action 'register' email password)}}>
+          {{action (route-action 'register' name email password)}}>
           Register
         </button>
       </div>

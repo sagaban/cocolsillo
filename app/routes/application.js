@@ -3,7 +3,6 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 const { inject: { service } } = Ember;
 
-
 export default Ember.Route.extend(
   ApplicationRouteMixin,
   {

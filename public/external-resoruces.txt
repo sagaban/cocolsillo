@@ -1,0 +1,7 @@
+Currencies
+https://gist.github.com/Fluidbyte/2973986
+
+Semanti-UI
+Emberfire
+Ember Simple Auth
+EmberJS

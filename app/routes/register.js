@@ -15,7 +15,7 @@ export default Ember.Route.extend(
     session: service(),
 
     actions: {
-      register(email, password) {
+      register(name, email, password) {
 
         if (isPresent(email) && isPresent(password)) {
           const auth = this.get('firebaseApp').auth();
@@ -27,7 +27,7 @@ export default Ember.Route.extend(
               id: authResponse.uid,
               email: authResponse.email,
               photoURL: authResponse.photoURL,
-              displayName: authResponse.displayName
+              name
             });
             return user.save();
           })

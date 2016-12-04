@@ -41,7 +41,7 @@ module.exports = function(defaults) {
         fonts: true,
         images: false,
         css: true,
-        javascript: false
+        javascript: true
       }
     }
   });

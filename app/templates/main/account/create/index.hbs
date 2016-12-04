@@ -1,0 +1,45 @@
+<form class="ui form" {{action (route-action 'createAccount' model) on="submit"}}>
+  <div class="field">
+    <label>Name</label>
+    {{input
+      type='text'
+      class='form-control'
+      value=model.name
+      placeholder='Name'
+    }}
+  </div>
+  <div class="field">
+    <label>Description</label>
+    {{input
+      type='text'
+      class='form-control'
+      value=model.description
+      placeholder='Description'
+    }}
+  </div>
+  <div class="field">
+    <label>Currency</label>
+    {{#ui-dropdown class="selection" selected="Bob" onChange=(action (route-action 'setCurrency' ))}}
+      <div class="default text">Currency</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {{#each currencies as |currency|}}
+          <div class="item" data-value="{{currency.code}}">
+            {{currency.name}} (<strong>{{currency.symbol_native}}</strong>)
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="field">
+    <label>Initial Balance</label>
+    {{input
+      type='number'
+      class='form-control'
+      value=model.initialBalance
+      placeholder='Initial Balance'
+    }}
+  </div>
+  {{test}}
+  <button class="ui button" type="submit">Submit</button>
+</form>

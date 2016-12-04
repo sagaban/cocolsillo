@@ -4,7 +4,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
   initialBalance: DS.attr('number'),
-  currency: DS.attr('string'),
+  currency: DS.attr(),
   entries: DS.hasMany('entry', { inverse: 'account' }),
 
   // List of parties concerned (Payer and payee)

@@ -22,12 +22,12 @@ export default Ember.Route.extend(
           const session = this.get('session');
 
           auth.createUserWithEmailAndPassword(email, password)
-          .then((userResponse) => {
+          .then((authResponse) => {
             const user = this.store.createRecord('user', {
-              uid: userResponse.uid,
-              email: userResponse.email,
-              photoURL: userResponse.photoURL,
-              displayName: userResponse.displayName
+              id: authResponse.uid,
+              email: authResponse.email,
+              photoURL: authResponse.photoURL,
+              displayName: authResponse.displayName
             });
             return user.save();
           })

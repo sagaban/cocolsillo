@@ -1,0 +1,19 @@
+<div class="ui secondary pointing menu">
+  {{!-- <a class="item active">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <a class="item">
+    Friends
+  </a> --}}
+  <span class="item">
+    <p>Signed in as {{currentUser.user.email}}</p>
+  </span>
+  <div class="right menu">
+    <a class="ui item" {{action 'invalidateSession'}}>
+      Logout
+    </a>
+  </div>
+</div>

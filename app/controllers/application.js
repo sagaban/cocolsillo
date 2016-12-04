@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
 
   notify: service(),
   session: service(),
+  currentUser: service('current-user'),
 
   actions: {
     invalidateSession: function invalidateSession() {

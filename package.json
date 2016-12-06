@@ -50,6 +50,7 @@
     "ember-simple-auth-firebase": "0.0.3",
     "emberfire": "2.0.4",
     "eslint-plugin-ember-suave": "^1.0.0",
+    "liquid-fire": "0.26.6",
     "loader.js": "^4.0.10",
     "postcss-cssnext": "^2.9.0",
     "postcss-scss": "^0.4.0",

@@ -12,8 +12,9 @@
     <p>Signed in as {{currentUser.user.email}}</p>
   </span>
   <div class="right menu">
-    <a class="ui item" {{action 'invalidateSession'}}>
-      Logout
-    </a>
+
+    <button class="ui item icon" {{action 'invalidateSession' on='click'}}>
+      <i class="sign out icon large"></i>
+    </button>
   </div>
 </div>

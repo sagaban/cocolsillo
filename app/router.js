@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('register');
   this.route('main', function() {
     this.route('account', function() {
+      this.route('index', { path: '/:account_id' }, function() {});
       this.route('create', function() {});
     });
   });

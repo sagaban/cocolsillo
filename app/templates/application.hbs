@@ -1,7 +1,7 @@
 {{ember-notify messageStyle='semantic-ui'}}
 <div class="container">
-  {{#if session.isAuthenticated}}
+  {{#liquid-if session.isAuthenticated class="navbar"}}
     {{partial 'navbar'}}
-  {{/if}}
+  {{/liquid-if}}
   {{liquid-outlet}}
 </div>

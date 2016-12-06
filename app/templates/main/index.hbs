@@ -14,4 +14,6 @@
   {{/each}}
 </div>
 
-<h2>{{link-to 'Create a new account' 'main.account.create'}}</h2>
+{{#link-to 'main.account.create'}}
+  <button class="fluid ui button">Create a new account</button>
+{{/link-to}}

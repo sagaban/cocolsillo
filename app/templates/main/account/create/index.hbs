@@ -40,6 +40,8 @@
       placeholder='Initial Balance'
     }}
   </div>
-  {{test}}
-  <button class="ui button" type="submit">Submit</button>
+  <div class="ui two buttons">
+    <button class="ui primary button" type="submit"> Submit </button>
+    {{#link-to 'main' tagName='button' class="ui button"}} Go back {{/link-to}}
+  </div>
 </form>

@@ -11,7 +11,7 @@ const env = process.env.EMBER_ENV;
 // Config and initilize dotenv
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config({
-    path: `.env.${env}`
+  path: `.env.${env}`
 });
 
 module.exports = function(defaults) {
@@ -23,7 +23,20 @@ module.exports = function(defaults) {
       compile: {
         enabled: true,
         plugins: [
-          { module: cssnext },
+
+          /*
+          CSSNext Features
+          automatic vendor prefixes, custom properties & var(), custom properties set & @apply, reduced calc(), custom media queries, media queries ranges, custom selectors, nesting, color() function, hwb() function, gray() function, #rrggbbaa colors, rgba function (rgb fallback), rebeccapurple color, font-variant property, filter property (svg fallback), initial value, rem unit (px fallback), :any-link pseudo-class, :matches pseudo-class, :not pseudo-class (to l.3), ::pseudo syntax (: fallback), overflow-wrap property (word-wrap fallback), attribute case insensitive, rgb() function (functional-notation), hsl() function (functional-notation)
+          */
+          {
+            module: cssnext,
+            options: {
+              browsers: ['last 2 version']
+            }
+          },
+          /*
+          contains plugins for Sass-like features, like variables, nesting, and mixins.
+          */
           { module: precss },
           {
             module: cssnano,

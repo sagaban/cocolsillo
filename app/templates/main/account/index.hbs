@@ -1,2 +1,22 @@
-Hello!
-{{model.name}}
+<h1>{{model.name}}</h1>
+{{#if model.entries}}
+  <h2>Entries</h2>
+  {{#each model.entries as |entry|}}
+    <div class="item">
+      <i class="large middle aligned icon right">
+        <strong>{{entry.amount}}</strong>
+        {{entry.date}}
+      </i>
+      <div class="content">
+          {{entry.description}}
+        <div class="description">{{account.description}}</div>
+      </div>
+    </div>
+  {{/each}}
+  {{else}}
+    <strong>There are no entries</strong>
+  {{/if}}
+  <div class="ui two buttons fixedBottom">
+    <button class="ui green button">Income</button>
+    <button class="ui red button">Expense</button>
+  </div>

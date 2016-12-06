@@ -13,6 +13,10 @@ Router.map(function() {
       this.route('index', { path: '/:account_id' }, function() {});
       this.route('create', function() {});
     });
+
+    this.route('entries', function() {
+      this.route('create');
+    });
   });
 });
 

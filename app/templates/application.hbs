@@ -3,5 +3,8 @@
   {{partial 'navbar'}}
 {{/liquid-if}}
 <div class="container">
+  {{#liquid-bind currentRouteName class="buttonContainer"}}
+    <div id="fixedBottom"></div>
+  {{/liquid-bind}}
   {{liquid-outlet}}
 </div>

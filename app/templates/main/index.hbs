@@ -17,7 +17,9 @@
   {{/each}}
 </div>
 
-{{#link-to 'main.account.create' tagName='button'
-  class="fluid ui button fixedBottom primary"}}
-  Create a new account
-{{/link-to}}
+{{#ember-wormhole to="fixedBottom"}}
+  {{#link-to 'main.account.create' tagName='button'
+    class="fluid ui button primary"}}
+    Create a new account
+  {{/link-to}}
+{{/ember-wormhole}}

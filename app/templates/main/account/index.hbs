@@ -16,7 +16,9 @@
   {{else}}
     <strong>There are no entries</strong>
   {{/if}}
-  <div class="ui two buttons fixedBottom">
-    <button class="ui green button">Income</button>
-    <button class="ui red button">Expense</button>
-  </div>
+  {{#ember-wormhole to="fixedBottom"}}
+    <div class="ui two buttons fixedBottom">
+      <button class="ui green button">Income</button>
+      <button class="ui red button">Expense</button>
+    </div>
+  {{/ember-wormhole}}

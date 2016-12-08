@@ -18,7 +18,7 @@
   {{/if}}
   {{#ember-wormhole to="fixedBottom"}}
     <div class="ui two buttons fixedBottom">
-      <button class="ui green button">Income</button>
-      <button class="ui red button">Expense</button>
+      {{#link-to 'main.entries.create' (query-params type="income") tagName='button' class="ui green button"}} Income {{/link-to}}
+      {{#link-to 'main.entries.create' (query-params type="expense") tagName='button' class="ui red button"}} Expense {{/link-to}}
     </div>
   {{/ember-wormhole}}

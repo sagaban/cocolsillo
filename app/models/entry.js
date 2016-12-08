@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   // income or expense
+  // TODO: check this value to be one or another
   type: DS.attr('string'),
   amount: DS.attr('number'),
   date: DS.attr('date'),
